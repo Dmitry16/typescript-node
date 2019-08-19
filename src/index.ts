@@ -2,23 +2,37 @@
 
 import express from 'express';
 
-const add = (a: number, b?: number) => {
-  // a way to get rid of the ts error (the red squiggling line):
-  // if (b) {
-  //   return a + b;
-  // } else {
-  //   return a;
-  // }
-  // another way to solve the ts error:
-  // return a + (b as number);
-  // and one more:
-  return a + b!;
-}
+// when to use interface and when type?
+// interface for objects and type for all other things
+
+interface Params {
+  a: number;
+  b: number;
+};
+
+type Add = ( x: Params ) => number;
+
+const add: Add = x => {
+  return x.a + x.b;
+};
+
+// const add = (a: number, b?: number) => {
+//   // a way to get rid of the ts error (the red squiggling line):
+//   // if (b) {
+//   //   return a + b;
+//   // } else {
+//   //   return a;
+//   // }
+//   // another way to solve the ts error:
+//   // return a + (b as number);
+//   // and one more:
+//   return a + b!;
+// }
 
 const app = express();
 
 app.get('/', (req: any) => {
-  add(1);
+  add({a: 1, b: 2});
 })
 
 app.listen(3000, () => {
