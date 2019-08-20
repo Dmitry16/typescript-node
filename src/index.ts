@@ -1,9 +1,10 @@
-// cmd + shft + p -> typescript restart server
+// sometimes typescript marks smth as an error (with a red squiggling line)
+// in such a case typescript server needs to be restarted by pressing 'cmd + shft + p'
 
 import express from 'express';
 
 // when to use interface and when type?
-// interface for objects and type for all other things
+// interface is better to use for objects and type for all other things
 
 interface Params {
   a: number;
